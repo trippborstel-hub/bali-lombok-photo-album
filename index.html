@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bali & Lombok Photo Album</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      color: #888;
+      font-size: 0.95rem;
+    }
+
+    .gallery {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      columns: 3;
+      column-gap: 1rem;
+    }
+
+    .gallery figure {
+      margin: 0 0 1rem;
+      break-inside: avoid;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .gallery img {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .gallery img:hover { opacity: 0.9; }
+
+    .gallery figcaption {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .day-header {
+      column-span: all;
+      padding: 2rem 0 0.5rem;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1rem;
+    }
+
+    .day-header:first-child { padding-top: 0; }
+
+    .day-header h2 {
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: #444;
+    }
+
+    .day-header p {
+      font-size: 0.85rem;
+      color: #999;
+      margin-top: 0.2rem;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      border-radius: 4px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .lightbox-nav:hover { opacity: 1; }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .gallery { columns: 2; }
+    }
+
+    @media (max-width: 500px) {
+      .gallery { columns: 1; }
+      header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bali & Lombok</h1>
+    <p>A photo album for family</p>
+  </header>
+
+  <div class="gallery" id="gallery">
+
+    <!-- Day 1: March 28 -->
+    <div class="day-header">
+      <h2>Day 1 — Saturday, March 28</h2>
+      <p>Departure day</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_0834.jpg" alt="Family selfie at the airport" loading="lazy">
+      <figcaption>And we're off! Airport selfie</figcaption>
+    </figure>
+
+    <!-- Day 2: March 30 -->
+    <div class="day-header">
+      <h2>Day 2 — Monday, March 30</h2>
+      <p>Arrival in Bali</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_0836.jpg" alt="Departure board showing Denpasar flight" loading="lazy">
+      <figcaption>Departure board — Denpasar bound</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0845.jpg" alt="Family on the plane" loading="lazy">
+      <figcaption>In-flight selfie on the way to Bali</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0850.jpg" alt="Resort lobby with traditional Balinese architecture" loading="lazy">
+      <figcaption>Checking in — the resort lobby</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0852.jpg" alt="Ocean view from resort hilltop" loading="lazy">
+      <figcaption>View from above — resort and ocean</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0853.jpg" alt="Relaxing in the private pool" loading="lazy">
+      <figcaption>Pool time in paradise</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0857.jpg" alt="Giant outdoor chess set at the resort" loading="lazy">
+      <figcaption>Giant chess — game on!</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0858.jpg" alt="Father and son at dinner" loading="lazy">
+      <figcaption>Father and son dinner time</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0859.jpg" alt="Family selfie at dinner" loading="lazy">
+      <figcaption>Family dinner selfie</figcaption>
+    </figure>
+
+    <!-- Day 3: March 31 -->
+    <div class="day-header">
+      <h2>Day 3 — Tuesday, March 31</h2>
+      <p>Exploring the resort</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_0863.jpg" alt="Villa room with private pool view" loading="lazy">
+      <figcaption>Room with a view — private pool villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0865.jpg" alt="Villa terrace and pool" loading="lazy">
+      <figcaption>Villa terrace overlooking the pool</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0866.jpg" alt="Private infinity pool surrounded by tropical trees" loading="lazy">
+      <figcaption>Private infinity pool in the sun</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0870.jpg" alt="Modern glass chapel by the sea" loading="lazy">
+      <figcaption>Stunning glass chapel by the ocean</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0873.jpg" alt="Glass chapel interior with ocean view" loading="lazy">
+      <figcaption>Inside the chapel — ocean through glass</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0879.jpg" alt="Traditional Balinese stone temple by the sea" loading="lazy">
+      <figcaption>Balinese temple overlooking the ocean</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0882.jpg" alt="Camel ride on the beach" loading="lazy">
+      <figcaption>Camel ride along the beach</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0884.jpg" alt="Directional sign post at the resort" loading="lazy">
+      <figcaption>Which way to go?</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_3014.jpg" alt="Couple selfie near the chapel" loading="lazy">
+      <figcaption>Couple selfie near the chapel</figcaption>
+    </figure>
+
+    <!-- Day 4: April 1 -->
+    <div class="day-header">
+      <h2>Day 4 — Wednesday, April 1</h2>
+      <p>Sunrise, beach, and the Lombok villa</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_0886.jpg" alt="Resort grounds lit up at night" loading="lazy">
+      <figcaption>Early morning — resort grounds before dawn</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0888.jpg" alt="Beautifully lit garden walkway at night" loading="lazy">
+      <figcaption>Garden walkway at dawn</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0889.jpg" alt="Illuminated garden with potted frangipani tree" loading="lazy">
+      <figcaption>Illuminated garden sculpture</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0891.jpg" alt="Balinese shrine lit at twilight" loading="lazy">
+      <figcaption>Balinese shrine at twilight</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0892.jpg" alt="Sunset over the resort and ocean" loading="lazy">
+      <figcaption>Sunrise over the resort</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0893.jpg" alt="Golden sunrise over the coast" loading="lazy">
+      <figcaption>Golden sunrise over the coast</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0895.jpg" alt="Gecko on the wall" loading="lazy">
+      <figcaption>Our little gecko friend</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0897.jpg" alt="Fiery orange sunrise over the ocean" loading="lazy">
+      <figcaption>Fiery orange sunrise over the sea</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0902.jpg" alt="Monkey perched on a wall" loading="lazy">
+      <figcaption>Local resident keeping watch</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0912.jpg" alt="Beach lounge area with umbrellas" loading="lazy">
+      <figcaption>Beach day under the umbrellas</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0915.jpg" alt="Red dragonfly resting" loading="lazy">
+      <figcaption>A red dragonfly resting poolside</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0925.jpg" alt="Resort main pool with gazebos" loading="lazy">
+      <figcaption>The main resort pool</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0926.jpg" alt="Beach cabanas and palm trees" loading="lazy">
+      <figcaption>Beach cabanas and palm trees</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0927.jpg" alt="Resort lobby with frangipani flower pool" loading="lazy">
+      <figcaption>Frangipani flower pool in the lobby</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0928.jpg" alt="Chapel and coastline at low tide" loading="lazy">
+      <figcaption>The chapel at low tide</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0930.jpg" alt="Selfie from balcony with ocean panorama" loading="lazy">
+      <figcaption>Balcony selfie with the ocean view</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0937.jpg" alt="Lombok villa exterior at night" loading="lazy">
+      <figcaption>Our Lombok villa at night</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0938.jpg" alt="Villa with pool reflection at night" loading="lazy">
+      <figcaption>Villa pool reflections</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0939.jpg" alt="Buddha statues by koi pond at night" loading="lazy">
+      <figcaption>Buddha statues by the koi pond</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0941.jpg" alt="Relaxing in the villa living room" loading="lazy">
+      <figcaption>Lounging in the villa living room</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0942.jpg" alt="Relaxing on the villa couch" loading="lazy">
+      <figcaption>Making ourselves at home</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0946.jpg" alt="Portrait at the villa" loading="lazy">
+      <figcaption>Villa portrait</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0947.jpg" alt="Traditional carved wooden doors" loading="lazy">
+      <figcaption>Traditional Balinese carved doors</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0949.jpg" alt="Pool and garden path lit up at night" loading="lazy">
+      <figcaption>Poolside garden path at night</figcaption>
+    </figure>
+
+    <!-- Day 5: April 2 -->
+    <div class="day-header">
+      <h2>Day 5 — Thursday, April 2</h2>
+      <p>Rice terraces, temples, and a traditional village</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_0954.jpg" alt="Morning pool reflections with palm trees" loading="lazy">
+      <figcaption>Morning reflections at the villa pool</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0957.jpg" alt="Couple relaxing at the villa poolside" loading="lazy">
+      <figcaption>Relaxing at the villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0965.jpg" alt="Balinese offering basket with flowers" loading="lazy">
+      <figcaption>A traditional Balinese offering</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0967.jpg" alt="Family photo at Tegallalang rice terraces" loading="lazy">
+      <figcaption>Family photo at the rice terraces</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0969.jpg" alt="Tegallalang rice terrace panorama" loading="lazy">
+      <figcaption>Tegallalang rice terrace views</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0971.jpg" alt="Sitting in a wicker nest overlooking rice terraces" loading="lazy">
+      <figcaption>Hanging out in a bird's nest swing</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0977.jpg" alt="Lush green rice terrace steps" loading="lazy">
+      <figcaption>Endless green steps of rice paddies</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0980.jpg" alt="Rice terraces with hut below" loading="lazy">
+      <figcaption>Looking down over the terraced hillside</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0981.jpg" alt="Swinging on a rope above the jungle" loading="lazy">
+      <figcaption>Jungle swing adventure</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0984.jpg" alt="Overlooking a valley with traditional hut" loading="lazy">
+      <figcaption>Taking in the valley views</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0988.jpg" alt="Posing with rice baskets on the terraces" loading="lazy">
+      <figcaption>Carrying rice baskets the traditional way</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0989.jpg" alt="Panoramic rice terrace view with palm trees" loading="lazy">
+      <figcaption>Rice terraces stretching into the distance</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0990.jpg" alt="Local guide by irrigation canal in the terraces" loading="lazy">
+      <figcaption>Our guide along the irrigation canal</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0994.jpg" alt="Wood carver working on a sculpture" loading="lazy">
+      <figcaption>Master wood carver at work</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0998.jpg" alt="Close-up of artisan carving detail" loading="lazy">
+      <figcaption>Intricate detail work up close</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_0999.jpg" alt="Browsing a carved chess set at woodworking shop" loading="lazy">
+      <figcaption>Checking out a hand-carved chess set</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1001.jpg" alt="Large carved wooden statue in shop" loading="lazy">
+      <figcaption>Incredible wooden sculpture</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1002.jpg" alt="Selfie with local guide at wood carving shop" loading="lazy">
+      <figcaption>With our guide at the carving workshop</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1005.jpg" alt="Waterfall in the jungle" loading="lazy">
+      <figcaption>Waterfall hidden in the jungle</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1006.jpg" alt="Ornate Balinese temple with colorful umbrellas" loading="lazy">
+      <figcaption>Balinese temple with ceremonial umbrellas</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1009.jpg" alt="Ornate temple gateway" loading="lazy">
+      <figcaption>Temple gateway — stunning stonework</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1010.jpg" alt="Guardian statue draped in orange sash" loading="lazy">
+      <figcaption>Temple guardian in ceremonial dress</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1014.jpg" alt="Inside the temple courtyard" loading="lazy">
+      <figcaption>Inside the temple courtyard</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1017.jpg" alt="Exploring multi-tiered temple structures" loading="lazy">
+      <figcaption>Exploring the temple grounds</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1019.jpg" alt="Walking with guide through temple" loading="lazy">
+      <figcaption>Walking through the temple with our guide</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1021.jpg" alt="Family photo at temple steps" loading="lazy">
+      <figcaption>Family photo at the temple steps</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1026.jpg" alt="Narrow alley in traditional Balinese village" loading="lazy">
+      <figcaption>Narrow alley in a traditional village</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1028.jpg" alt="Traditional village compounds and shrines" loading="lazy">
+      <figcaption>Village family compounds and shrines</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1030.jpg" alt="Ancient bamboo woven house" loading="lazy">
+      <figcaption>Traditional bamboo woven house</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1031.jpg" alt="Walking path along bamboo buildings" loading="lazy">
+      <figcaption>Village walkway with flower offerings</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1032.jpg" alt="Ornate village house with stone carvings" loading="lazy">
+      <figcaption>Ornate village house and stone carvings</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1034.jpg" alt="Moss-covered traditional bamboo home" loading="lazy">
+      <figcaption>Centuries-old bamboo home</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1035.jpg" alt="Carved mask and basket on bamboo wall" loading="lazy">
+      <figcaption>Carved mask and basket on the village wall</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1036.jpg" alt="Vintage bicycle outside traditional house" loading="lazy">
+      <figcaption>Vintage bicycle and village charm</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1040.jpg" alt="Family photo in the traditional village" loading="lazy">
+      <figcaption>Family photo in the traditional village</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1043.jpg" alt="Ancient temple gate with sleeping dog" loading="lazy">
+      <figcaption>Village temple — even the dog is relaxed</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1047.jpg" alt="Main street of traditional Balinese village" loading="lazy">
+      <figcaption>The main street of the village</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1049.jpg" alt="Street dog on the roadside" loading="lazy">
+      <figcaption>Friendly street pup</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1054.jpg" alt="Restaurant entrance with golden statues" loading="lazy">
+      <figcaption>Grand restaurant entrance</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1058.jpg" alt="Infinity pool glowing at night in the jungle" loading="lazy">
+      <figcaption>Infinity pool glowing in the jungle night</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1059.jpg" alt="Jungle hillside resort lit up at evening" loading="lazy">
+      <figcaption>Jungle resort twinkling at dusk</figcaption>
+    </figure>
+
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous">&lsaquo;</button>
+    <img src="" alt="">
+    <button class="lightbox-nav lightbox-next" aria-label="Next">&rsaquo;</button>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const gallery = document.getElementById('gallery');
+    let images = [];
+    let currentIndex = 0;
+
+    gallery.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      images = [...gallery.querySelectorAll('img')];
+      currentIndex = images.indexOf(img);
+      openLightbox(img.src, img.alt);
+    });
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigate(dir) {
+      currentIndex = (currentIndex + dir + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+    }
+
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+    lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    });
+  </script>
+
+</body>
+</html>
