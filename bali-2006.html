@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tripp & Syd — Bali 2006</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    /* Navigation */
+    nav {
+      background: #2a2a2a;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #fff;
+    }
+
+    /* Banner */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      background: #1a2a1a;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0.65;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.55) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .banner-overlay h1 {
+      font-size: 3.2rem;
+      font-weight: 200;
+      letter-spacing: 0.12em;
+      color: #fff;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+
+    .banner-overlay .subtitle {
+      margin-top: 0.6rem;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+    }
+
+    .banner-overlay .description {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Gallery */
+    .gallery {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .gallery figure {
+      flex: 1 1 calc(33.333% - 0.67rem);
+      max-width: calc(33.333% - 0.67rem);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .gallery img {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .gallery img:hover { opacity: 0.9; }
+
+    .gallery figcaption {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .section-header {
+      flex-basis: 100%;
+      padding: 2.5rem 0 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .section-header:first-child { padding-top: 0; }
+
+    .section-header h2 {
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: #444;
+    }
+
+    .section-header p {
+      font-size: 0.85rem;
+      color: #999;
+      margin-top: 0.2rem;
+    }
+
+    /* Narrative blocks */
+    .narrative {
+      flex-basis: 100%;
+      max-width: 780px;
+      margin: 1.5rem auto;
+      padding: 1.5rem 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #444;
+      font-style: italic;
+    }
+
+    .narrative p + p {
+      margin-top: 1rem;
+    }
+
+    /* World Events */
+    .world-events {
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .world-events h2 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #444;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .world-events ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .world-events li {
+      background: #fff;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .world-events li strong {
+      display: block;
+      color: #333;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      border-radius: 4px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .lightbox-nav:hover { opacity: 1; }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .gallery figure {
+        flex: 1 1 calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
+      }
+      .banner { height: 320px; }
+      .banner-overlay h1 { font-size: 2.4rem; }
+      .world-events ul { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .gallery figure {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      .banner { height: 260px; }
+      .banner-overlay h1 { font-size: 1.8rem; }
+      .banner-overlay .subtitle { font-size: 0.95rem; }
+      .narrative { padding: 1rem 1.2rem; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Bali & Lombok 2026</a>
+    <a href="bali-2006.html" class="active">Bali 2006</a>
+  </nav>
+
+  <header class="banner">
+    <img src="photos-2006/DSC_0131.jpg" alt="Rice terraces and river valley near Ubud, Bali">
+    <div class="banner-overlay">
+      <h1>Tripp & Syd</h1>
+      <div class="subtitle">Bali, April 2006</div>
+      <div class="description">A brother-sister adventure through the temples, rice terraces, and villages of Bali.</div>
+    </div>
+  </header>
+
+  <div class="gallery" id="gallery">
+
+    <!-- Ubud & The Villa -->
+    <div class="section-header">
+      <h2>Ubud</h2>
+      <p>Our home base in the heart of Bali</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0004.jpg" alt="Traditional Balinese villa hidden in tropical garden" loading="lazy">
+      <figcaption>Our villa tucked into the jungle</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0006.jpg" alt="Syd in the villa pool" loading="lazy">
+      <figcaption>Syd in the villa pool</figcaption>
+    </figure>
+
+    <div class="narrative">
+      <p>This place is exquisite... where to begin. Bali has 3 million people, and a culture that is about a thousand years old and is immersed in gratitude. Gratitude for the rice, for the rains and waters, for each other, for the animals, for being alive. It's such a stark difference with the Western world where time is money and tightly compressed. Here time is ceremony.</p>
+    </div>
+
+    <!-- Monkey Forest -->
+    <div class="section-header">
+      <h2>Monkey Forest</h2>
+      <p>Making friends with the locals</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0015.jpg" alt="Monkey sitting on Tripp's shoulder" loading="lazy">
+      <figcaption>New friend on my shoulder</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0016.jpg" alt="Monkey climbing on Tripp" loading="lazy">
+      <figcaption>Getting comfortable up there</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0017.jpg" alt="Tripp laughing as monkey grabs his hand" loading="lazy">
+      <figcaption>He's checking my pockets</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0019.jpg" alt="Macaque monkey posing on a wall" loading="lazy">
+      <figcaption>The boss of the forest</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0026.jpg" alt="Syd holding a monkey" loading="lazy">
+      <figcaption>Syd's turn with the monkey</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0046.jpg" alt="Moss-covered stone statue in the jungle" loading="lazy">
+      <figcaption>Ancient guardian, claimed by the jungle</figcaption>
+    </figure>
+
+    <!-- Offerings & Ceremony -->
+    <div class="section-header">
+      <h2>Culture & Ceremony</h2>
+      <p>Gratitude woven into daily life</p>
+    </div>
+
+    <div class="narrative">
+      <p>At nearly every entrance, and every shrine there is a daily offering made. These offerings are an art form in themselves. Palm leaves weaved into a small basket, the form of which depends on the time of year, and cycle of the moon. Inside of which a small offering is placed &mdash; perhaps a little rice, an orchid, some sweetmeats. You can't walk down the sidewalks of Ubud without stepping on one. Some are to the gods, others for good business, or perhaps wishing someone well. With such deep gratitude in their hearts, it's no wonder they are among the most friendly and present people on the planet.</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0054.jpg" alt="Traditional Balinese dance performance" loading="lazy">
+      <figcaption>Traditional Balinese dance performance</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0059.jpg" alt="Legong dancers in golden costume" loading="lazy">
+      <figcaption>Legong dancers in golden regalia</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0064.jpg" alt="Barong dance performance" loading="lazy">
+      <figcaption>The Barong &mdash; spirit of good</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0121.jpg" alt="Barong dance with Rangda" loading="lazy">
+      <figcaption>Barong vs. Rangda &mdash; the eternal battle</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002.jpg" alt="Shadow puppet performance by firelight" loading="lazy">
+      <figcaption>Wayang shadow puppet theatre</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(02).jpg" alt="Shadow puppet warrior silhouette" loading="lazy">
+      <figcaption>Puppet master brings legends to life</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(03).jpg" alt="Shadow puppet battle scene" loading="lazy">
+      <figcaption>Battle of the shadow puppets</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(18).jpg" alt="Kecak fire dance performance" loading="lazy">
+      <figcaption>Kecak fire dance</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(20).jpg" alt="Priest seated among candles and offerings" loading="lazy">
+      <figcaption>Priest among the offerings</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(22).jpg" alt="Fire walking ceremony with glowing embers" loading="lazy">
+      <figcaption>Fire walking ceremony</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(27).jpg" alt="Ornate golden ceremonial offering tower" loading="lazy">
+      <figcaption>Ceremonial offering tower</figcaption>
+    </figure>
+
+    <!-- The Ubud Market -->
+    <div class="section-header">
+      <h2>Ubud Market</h2>
+      <p>Morning at the market</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/zSC_0002_(05).jpg" alt="Bustling Ubud market from above" loading="lazy">
+      <figcaption>The bustling Ubud market from above</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(06).jpg" alt="Fruit and vegetable vendors at Ubud market" loading="lazy">
+      <figcaption>Fresh produce laid out at dawn</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(08).jpg" alt="Lemongrass and basket sellers at the market" loading="lazy">
+      <figcaption>Lemongrass and baskets for sale</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(11).jpg" alt="Woman selling flowers for offerings at the market" loading="lazy">
+      <figcaption>Selling flowers for the daily offerings</figcaption>
+    </figure>
+
+    <!-- Ayung River Walk -->
+    <div class="section-header">
+      <h2>Ayung River Walk</h2>
+      <p>Hiking the river valley near Sayan</p>
+    </div>
+
+    <div class="narrative">
+      <p>Yesterday we walked along the Ayung River, near Sayan outside of Ubud. It's a luscious river valley with rice terraces along the banks, and forests of palm trees lining the ridge, from which the volcanoes that the island was birthed can be seen. We found a young guide at the head of the trail, who was all too happy to escort us on our hike. Like so many people here on the island, the downturn in tourism has hit hard &mdash; he only has a few days of work at a restaurant, so in his off days he leads these hikes.</p>
+      <p>As almost every piece of land on Bali has been shaped by humans in some way, its meaning and purpose is not apparent to western eyes. The only source of fresh water in Bali is rain, which starts in the mountains and flows to the sea. In order to make sure that farmers at the beginning of a river don't take water at the expense of the farmer downstream, the Balinese have created organizations called sabaks. Every six months the sabaks meet in ceremony to decide how much water is available, how it should be distributed, and what crops each farmer should plant.</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0069.jpg" alt="Syd overlooking rice terraces and mountains" loading="lazy">
+      <figcaption>Syd taking in the valley views</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0073.jpg" alt="Stone shrine among palm trees and rice paddies" loading="lazy">
+      <figcaption>Shrine watching over the rice fields</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0074.jpg" alt="Walking along an irrigation canal with guide" loading="lazy">
+      <figcaption>Walking the irrigation canal with our guide</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0077.jpg" alt="Tripp and Syd on the Ayung River trail" loading="lazy">
+      <figcaption>Tripp and Syd on the Ayung River trail</figcaption>
+    </figure>
+
+    <!-- Art & Daily Life -->
+    <div class="section-header">
+      <h2>Art & Daily Life</h2>
+      <p>Beauty is everywhere</p>
+    </div>
+
+    <div class="narrative">
+      <p>The Balinese love their land, and see no separation between themselves and the land. There are gods of the rice, gods of the rivers, all of which must be kept happy so that they can continue to grow food, nourish their bodies, and live a healthy life. One of the results is that there is such care in how they work. Work is the manifestation of beauty rather than something to be done for the sake of achievement and self-glorification. Art is everywhere &mdash; even a modern petrol station is adorned with textiles, stone carvings of guardians, and offerings of flowers. They are a highly adaptable people, absorbing the modern world with a style and grace all their own.</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0076.jpg" alt="Pertamina petrol station adorned with Balinese decorations" loading="lazy">
+      <figcaption>Even the petrol station has style</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0052.jpg" alt="Syd stretching on a mossy cliff by a waterfall" loading="lazy">
+      <figcaption>Syd stretching by the waterfall</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0173.jpg" alt="Syd dipping feet in a koi pond at an art gallery" loading="lazy">
+      <figcaption>Cooling off at an art gallery</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0176.jpg" alt="Syd smiling surrounded by Balinese paintings" loading="lazy">
+      <figcaption>Syd surrounded by Balinese art</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(33).jpg" alt="Tripp with a Balinese friend in front of carved golden temple door" loading="lazy">
+      <figcaption>Making friends along the way</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/zSC_0002_(30).jpg" alt="Balinese family preparing food in an outdoor kitchen" loading="lazy">
+      <figcaption>Family kitchen &mdash; preparing a feast</figcaption>
+    </figure>
+
+    <!-- Holy Springs & Water -->
+    <div class="section-header">
+      <h2>Sacred Springs</h2>
+      <p>Purification at the water temple</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0089.jpg" alt="Tripp under a sacred spring spout at a water temple" loading="lazy">
+      <figcaption>Purification at the sacred springs</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0094.jpg" alt="Syd holding a rice stalk and smiling" loading="lazy">
+      <figcaption>Syd with a freshly picked rice stalk</figcaption>
+    </figure>
+
+    <!-- Lunch with our Guide's Family -->
+    <div class="section-header">
+      <h2>Lunch with Our Guide's Family</h2>
+      <p>An invitation we'll never forget</p>
+    </div>
+
+    <div class="narrative">
+      <p>Syd and I are off &mdash; we have a lunch date with the family of our Ayung River guide...</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0100.jpg" alt="Guide and his family smiling with their baby" loading="lazy">
+      <figcaption>Our guide and his young family</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0103.jpg" alt="Guide's family laughing together" loading="lazy">
+      <figcaption>Sharing a laugh together</figcaption>
+    </figure>
+
+    <!-- Countryside -->
+    <div class="section-header">
+      <h2>The Countryside</h2>
+      <p>Rice fields, river valleys, and open road</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0131.jpg" alt="Lush green river valley with rice paddies" loading="lazy">
+      <figcaption>Rice paddies along the river valley</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0132.jpg" alt="Yellow bridge over a jungle river" loading="lazy">
+      <figcaption>Bridge over the jungle river</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0135.jpg" alt="Expansive rice fields with small huts and mountains" loading="lazy">
+      <figcaption>Rice fields stretching to the mountains</figcaption>
+    </figure>
+
+    <!-- The Coast -->
+    <div class="section-header">
+      <h2>The Coast</h2>
+      <p>Snorkeling, beaches, and fishing villages</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/DSC_0146.jpg" alt="Snorkeling in clear blue water" loading="lazy">
+      <figcaption>Snorkeling in crystal clear water</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0151.jpg" alt="Syd smiling with snorkel gear and ocean behind" loading="lazy">
+      <figcaption>Syd after a snorkel session</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0154.jpg" alt="Local man cracking open a coconut on the beach" loading="lazy">
+      <figcaption>Fresh coconut on the beach</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0155.jpg" alt="Syd with locals holding a giant lobster on the beach" loading="lazy">
+      <figcaption>Check out the size of that lobster!</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0156.jpg" alt="Locals building a traditional kite" loading="lazy">
+      <figcaption>Building a traditional kite</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0157.jpg" alt="Syd on the beach near a fishing village" loading="lazy">
+      <figcaption>Syd at the fishing village</figcaption>
+    </figure>
+    <figure>
+      <img src="photos-2006/DSC_0165.jpg" alt="Sunset over the ocean from a seaside terrace" loading="lazy">
+      <figcaption>Sunset from the seaside terrace</figcaption>
+    </figure>
+
+    <!-- Heading Home -->
+    <div class="section-header">
+      <h2>Heading Home</h2>
+      <p>Until next time, Bali</p>
+    </div>
+
+    <figure>
+      <img src="photos-2006/zSC_0002_(35).jpg" alt="Syd at the airport heading home" loading="lazy">
+      <figcaption>Syd at the airport &mdash; until next time</figcaption>
+    </figure>
+
+  </div>
+
+  <!-- World Events -->
+  <section class="world-events">
+    <h2>The World in April 2006</h2>
+    <ul>
+      <li>
+        <strong>Music</strong>
+        The Red Hot Chili Peppers released "Stadium Arcadium." Shakira's "Hips Don't Lie" was climbing the charts. Daniel Powter's "Bad Day" held the #1 spot in the US.
+      </li>
+      <li>
+        <strong>Film & TV</strong>
+        "The Sopranos" was in the middle of its final season. "Ice Age: The Meltdown" was #1 at the box office. "Lost" and "24" dominated TV ratings.
+      </li>
+      <li>
+        <strong>Technology</strong>
+        Twitter launched to the public on March 21, just days before this trip. The first MacBook Pro had shipped two months earlier. Google was in talks to acquire YouTube.
+      </li>
+      <li>
+        <strong>World News</strong>
+        Italy elected Romano Prodi as Prime Minister. Nepal's King Gyanendra restored parliament after weeks of pro-democracy protests. Iran announced it had successfully enriched uranium.
+      </li>
+      <li>
+        <strong>Sports</strong>
+        The 2006 FIFA World Cup in Germany was two months away, with anticipation building worldwide. Barry Bonds was chasing Babe Ruth's home run record with #714.
+      </li>
+      <li>
+        <strong>Indonesia</strong>
+        Bali was still recovering from the 2005 bombings. Tourism had dropped significantly, deeply affecting the local economy &mdash; something Tripp and Syd witnessed firsthand through their guide's story.
+      </li>
+    </ul>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous">&lsaquo;</button>
+    <img src="" alt="">
+    <button class="lightbox-nav lightbox-next" aria-label="Next">&rsaquo;</button>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const gallery = document.getElementById('gallery');
+    let images = [];
+    let currentIndex = 0;
+
+    gallery.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      images = [...gallery.querySelectorAll('img')];
+      currentIndex = images.indexOf(img);
+      openLightbox(img.src, img.alt);
+    });
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigate(dir) {
+      currentIndex = (currentIndex + dir + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+    }
+
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+    lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    });
+  </script>
+
+</body>
+</html>
