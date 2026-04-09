@@ -108,6 +108,17 @@
       color: #666;
     }
 
+    .gallery .video-feature {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    .gallery .video-feature video {
+      width: 100%;
+      display: block;
+      border-radius: 6px 6px 0 0;
+    }
+
     .day-header {
       flex-basis: 100%;
       padding: 2.5rem 0 0.5rem;
@@ -1105,6 +1116,14 @@
       <img src="photos/IMG_1309.jpg" alt="Family on the beach holding baby turtles at release" loading="lazy">
       <figcaption>Family turtle release — an unforgettable moment</figcaption>
     </figure>
+
+    <figure class="video-feature">
+      <video controls preload="metadata" poster="photos/IMG_1296.jpg">
+        <source src="videos/turtle-release.mp4" type="video/mp4">
+      </video>
+      <figcaption>Baby Turtle Release Day — the full video</figcaption>
+    </figure>
+
     <figure>
       <img src="photos/IMG_1315.jpg" alt="Turtle Release Lunch Party at the Lombok villa" loading="lazy">
       <figcaption>Turtle Release Lunch Party at our villa</figcaption>
