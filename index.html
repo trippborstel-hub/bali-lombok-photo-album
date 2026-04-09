@@ -6,6 +6,7 @@
   <title>Bali & Lombok — Billings Borstel Family Trip</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 3.5rem; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -190,6 +191,38 @@
       .banner-overlay h1 { font-size: 2.4rem; }
     }
 
+    /* Day jump nav */
+    .day-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0.6rem 1rem;
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .day-nav a {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      background: #f0f0f0;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .day-nav a:hover {
+      background: #333;
+      color: #fff;
+    }
+
     @media (max-width: 500px) {
       .gallery figure {
         flex: 1 1 100%;
@@ -199,6 +232,7 @@
       .banner-overlay h1 { font-size: 1.8rem; }
       .banner-overlay .subtitle { font-size: 0.95rem; }
       .banner-overlay .description { font-size: 0.85rem; }
+      .day-nav a { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
     }
   </style>
 </head>
@@ -218,10 +252,25 @@
     </div>
   </header>
 
+  <div class="day-nav">
+    <a href="#day1">Day 1</a>
+    <a href="#day2">Day 2</a>
+    <a href="#day3">Day 3</a>
+    <a href="#day4">Day 4</a>
+    <a href="#day5">Day 5</a>
+    <a href="#day6">Day 6</a>
+    <a href="#day7">Day 7</a>
+    <a href="#day8">Day 8</a>
+    <a href="#day9">Day 9</a>
+    <a href="#day10">Day 10</a>
+    <a href="#day11">Day 11</a>
+    <a href="#day12">Day 12</a>
+  </div>
+
   <div class="gallery" id="gallery">
 
     <!-- Day 1: March 28 — Departing SFO -->
-    <div class="day-header">
+    <div class="day-header" id="day1">
       <h2>Day 1 — Saturday, March 28</h2>
       <p>Departing SFO</p>
     </div>
@@ -231,7 +280,7 @@
     </figure>
 
     <!-- Day 2: March 30 — Vietnam layover & arrival at Ritz Carlton Nusa Dua -->
-    <div class="day-header">
+    <div class="day-header" id="day2">
       <h2>Day 2 — Monday, March 30</h2>
       <p>Vietnam layover & arrival at Ritz Carlton, Nusa Dua</p>
     </div>
@@ -269,7 +318,7 @@
     </figure>
 
     <!-- Day 3: March 31 — Hanging out at the Ritz Carlton -->
-    <div class="day-header">
+    <div class="day-header" id="day3">
       <h2>Day 3 — Tuesday, March 31</h2>
       <p>A day at the Ritz Carlton, Nusa Dua</p>
     </div>
@@ -311,7 +360,7 @@
     </figure>
 
     <!-- Day 4: April 1 — Last day at Ritz Carlton, then travel to Chapung Sebali in Ubud -->
-    <div class="day-header">
+    <div class="day-header" id="day4">
       <h2>Day 4 — Wednesday, April 1</h2>
       <p>Sunrise at the Ritz Carlton, then on to Chapung Sebali in Ubud</p>
     </div>
@@ -442,7 +491,7 @@
     </figure>
 
     <!-- Day 5: April 2 — Ubud tour with guide -->
-    <div class="day-header">
+    <div class="day-header" id="day5">
       <h2>Day 5 — Thursday, April 2</h2>
       <p>Touring Ubud — rice terraces, wood carver, temple & traditional village</p>
     </div>
@@ -709,6 +758,388 @@
     <figure>
       <img src="photos/IMG_1059.jpg" alt="Chapung Sebali resort lit up at evening" loading="lazy">
       <figcaption>Chapung Sebali twinkling in the jungle</figcaption>
+    </figure>
+
+    <!-- Day 6: April 3 — Exploring Ubud town, Kecak dance -->
+    <div class="day-header" id="day6">
+      <h2>Day 6 — Friday, April 3</h2>
+      <p>Ubud town, shopping, and the Kecak fire dance</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_1064.jpg" alt="Carved Mandalorian helmets at Ubud shop" loading="lazy">
+      <figcaption>Carved helmets at an Ubud shop</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1065.jpg" alt="Walking past traditional Balinese shops in Ubud" loading="lazy">
+      <figcaption>Strolling through the streets of Ubud</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1067.jpg" alt="Bintang beer at a cafe" loading="lazy">
+      <figcaption>Cold Bintang — the taste of Bali</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1071.jpg" alt="Relaxing in the jungle infinity pool at Chapung Sebali" loading="lazy">
+      <figcaption>Afternoon in the jungle pool</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1074.jpg" alt="Chapung Sebali infinity pool at dusk with palm reflections" loading="lazy">
+      <figcaption>The pool at dusk — palm reflections</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1076.jpg" alt="Poolside restaurant at Chapung Sebali at dusk" loading="lazy">
+      <figcaption>Poolside restaurant at golden hour</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1077.jpg" alt="Chapung Sebali pool and palms at sunset" loading="lazy">
+      <figcaption>Sunset at the pool</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1079.jpg" alt="Posing at a Balinese temple entrance at night" loading="lazy">
+      <figcaption>At the temple before the Kecak dance</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1081.jpg" alt="Kecak fire dance performers in circle at temple" loading="lazy">
+      <figcaption>The Kecak fire dance begins</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1082.jpg" alt="Kecak dance performers chanting around flames" loading="lazy">
+      <figcaption>Circle of chanting voices and flame</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1085.jpg" alt="Kecak fire dance in full swing at Balinese temple" loading="lazy">
+      <figcaption>Kecak dance in full swing</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1088.jpg" alt="Performers at the Kecak dance" loading="lazy">
+      <figcaption>Performers lost in the ritual</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1089.jpg" alt="Fire dance performer" loading="lazy">
+      <figcaption>Fire dance finale</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1090.jpg" alt="Moss-covered demon statue with flower" loading="lazy">
+      <figcaption>Stone guardian with a flower offering</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1091.jpg" alt="Temple stone carvings at night" loading="lazy">
+      <figcaption>Temple carvings lit up at night</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1092.jpg" alt="Indonesian herbal drink at convenience store" loading="lazy">
+      <figcaption>Trying the local herbal drinks</figcaption>
+    </figure>
+
+    <!-- Day 7: April 4 — Villa day & Seminyak sunset -->
+    <div class="day-header" id="day7">
+      <h2>Day 7 — Saturday, April 4</h2>
+      <p>Villa life and sunset cocktails</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_1097.jpg" alt="Son with a friendly dog on the villa porch" loading="lazy">
+      <figcaption>Made a new friend at the villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1098.jpg" alt="Close-up of a friendly golden dog" loading="lazy">
+      <figcaption>Our villa buddy</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1103.jpg" alt="Pool and gardens at the villa property" loading="lazy">
+      <figcaption>The villa pool and gardens</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1104.jpg" alt="Villa lounge area with tropical trees" loading="lazy">
+      <figcaption>Villa lounge in the afternoon</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1113.jpg" alt="Elegant villa living room" loading="lazy">
+      <figcaption>The villa living room</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1115.jpg" alt="Villa interior wide angle" loading="lazy">
+      <figcaption>Open-air tropical living</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1121.jpg" alt="Family group selfie at the villa" loading="lazy">
+      <figcaption>Family selfie at the villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1122.jpg" alt="Sunset view over beachfront resort" loading="lazy">
+      <figcaption>Sunset over the coast</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1123.jpg" alt="Sunset from the rooftop bar" loading="lazy">
+      <figcaption>Sunset from the rooftop bar</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1128.jpg" alt="Couple with cocktails at sunset rooftop bar" loading="lazy">
+      <figcaption>Sunset cocktails</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1130.jpg" alt="Couple toasting at rooftop bar with ocean sunset" loading="lazy">
+      <figcaption>Cheers to Bali!</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1132.jpg" alt="Rooftop bar at dusk with string lights" loading="lazy">
+      <figcaption>The rooftop bar at dusk</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1133.jpg" alt="Beachfront resort pool lit up at night" loading="lazy">
+      <figcaption>Beachfront resort glowing at night</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1135.jpg" alt="Beach club at twilight" loading="lazy">
+      <figcaption>Beach club twilight</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1137.jpg" alt="Moonlit beach with palm trees and red lights" loading="lazy">
+      <figcaption>Moonlit beach walk home</figcaption>
+    </figure>
+
+    <!-- Day 8: April 5 — Relaxing -->
+    <div class="day-header" id="day8">
+      <h2>Day 8 — Sunday, April 5</h2>
+      <p>Rest day</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_1143.jpg" alt="Rooftop terrace overlooking the ocean" loading="lazy">
+      <figcaption>Rooftop views on a lazy morning</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1154.jpg" alt="Busy Bali street with motorbikes" loading="lazy">
+      <figcaption>The real Bali — motorbikes everywhere</figcaption>
+    </figure>
+
+    <!-- Day 9: April 6 — Turtle conservation, Lombok -->
+    <div class="day-header" id="day9">
+      <h2>Day 9 — Monday, April 6</h2>
+      <p>Turtle conservation on Lombok</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_1167.jpg" alt="Golden orb-weaver spider on its web" loading="lazy">
+      <figcaption>Golden orb-weaver — welcome to Lombok</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1169.jpg" alt="Baby sea turtles in conservation tank" loading="lazy">
+      <figcaption>Baby sea turtles in the conservation tank</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1171.jpg" alt="Baby turtles swimming in tank" loading="lazy">
+      <figcaption>Little swimmers getting stronger</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1173.jpg" alt="Baby turtles in shallow water" loading="lazy">
+      <figcaption>Almost ready for the ocean</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1176.jpg" alt="Turtle Conservation Lombok facility exterior" loading="lazy">
+      <figcaption>Turtle Conservation Lombok</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1177.jpg" alt="Conservation tanks at turtle facility" loading="lazy">
+      <figcaption>The conservation tanks</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1181.jpg" alt="Cleaning baby sea turtles at conservation center" loading="lazy">
+      <figcaption>Cleaning and caring for the babies</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1185.jpg" alt="Handling baby turtles with gloves" loading="lazy">
+      <figcaption>Gentle hands for gentle creatures</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1187.jpg" alt="Cleaning turtle tanks at conservation" loading="lazy">
+      <figcaption>Tank cleaning time</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1192.jpg" alt="Holding a baby green sea turtle" loading="lazy">
+      <figcaption>Hello, little one</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1194.jpg" alt="Tropical villa in Lombok" loading="lazy">
+      <figcaption>Our Lombok villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1195.jpg" alt="Lombok villa deck and pool" loading="lazy">
+      <figcaption>Villa pool in Lombok</figcaption>
+    </figure>
+
+    <!-- Day 10: April 7 — More turtle work, Lombok -->
+    <div class="day-header" id="day10">
+      <h2>Day 10 — Tuesday, April 7</h2>
+      <p>Turtle eggs, sailboats, and more conservation</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_1200.jpg" alt="Traditional outrigger sailboat off Lombok coast" loading="lazy">
+      <figcaption>Traditional outrigger sailboat off Lombok</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1205.jpg" alt="Reaching into a turtle egg nest at the hatchery" loading="lazy">
+      <figcaption>Checking the turtle egg nest at the hatchery</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1208.jpg" alt="Turtle egg hatchery" loading="lazy">
+      <figcaption>The hatchery — new life emerging</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1210.jpg" alt="View from villa to pool and tropical gardens" loading="lazy">
+      <figcaption>Morning view from the villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1211.jpg" alt="Villa interior looking out to pool" loading="lazy">
+      <figcaption>Breakfast with a view</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1214.jpg" alt="Sandy beach with murals near turtle center" loading="lazy">
+      <figcaption>Beach near the turtle center</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1217.jpg" alt="Holding a baby sea turtle with gloved hands" loading="lazy">
+      <figcaption>Holding a baby turtle — pure joy</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1227.jpg" alt="Couple under the Turtle Conservation Lombok sign" loading="lazy">
+      <figcaption>At the Turtle Conservation Lombok sign</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1229.jpg" alt="Posing at turtle conservation entrance" loading="lazy">
+      <figcaption>Proud volunteers</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1235.jpg" alt="Green katydid insect in macro" loading="lazy">
+      <figcaption>Lombok wildlife — a bright green katydid</figcaption>
+    </figure>
+
+    <!-- Day 11: April 8 — Lombok beach & more turtles -->
+    <div class="day-header" id="day11">
+      <h2>Day 11 — Wednesday, April 8</h2>
+      <p>Beach life and turtle care on Lombok</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_1238.jpg" alt="Bird eating from a Balinese offering" loading="lazy">
+      <figcaption>Bird enjoying the morning offering</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1241.jpg" alt="Local staff preparing food" loading="lazy">
+      <figcaption>Local chef giving a thumbs up</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1242.jpg" alt="Food preparation at the villa" loading="lazy">
+      <figcaption>Fresh food prep at the villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1245.jpg" alt="Beachside surf shack in Lombok" loading="lazy">
+      <figcaption>Surf shack on the Lombok beach</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1246.jpg" alt="Gently holding a baby sea turtle" loading="lazy">
+      <figcaption>Gently holding a baby sea turtle</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1251.jpg" alt="Son holding a baby turtle at the tank" loading="lazy">
+      <figcaption>Saying hello to the little ones</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1264.jpg" alt="Holding a hand-painted Hard Shell Easy Livin sign" loading="lazy">
+      <figcaption>Hard Shell, Easy Livin'</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1265.jpg" alt="Overview of Turtle Conservation Lombok grounds" loading="lazy">
+      <figcaption>The conservation center grounds</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1267.jpg" alt="Floating frangipani flowers in a stone bowl" loading="lazy">
+      <figcaption>Floating frangipani by the pool</figcaption>
+    </figure>
+
+    <!-- Day 12: April 9 — Turtle release day! -->
+    <div class="day-header" id="day12">
+      <h2>Day 12 — Thursday, April 9</h2>
+      <p>Turtle release day!</p>
+    </div>
+    <figure>
+      <img src="photos/IMG_1271.jpg" alt="Juvenile green sea turtle in tank" loading="lazy">
+      <figcaption>One last look before release</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1273.jpg" alt="Son hammering a sign at the conservation center" loading="lazy">
+      <figcaption>Helping out — hanging a sign at the center</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1274.jpg" alt="Working at the turtle conservation center" loading="lazy">
+      <figcaption>Lending a hand at the center</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1282.jpg" alt="Family under the Turtle Conservation Lombok sign" loading="lazy">
+      <figcaption>Family photo at Turtle Conservation Lombok</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1288.jpg" alt="Family posing at turtle conservation" loading="lazy">
+      <figcaption>All smiles — it's release day!</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1289.jpg" alt="Group photo of volunteers and staff at conservation center" loading="lazy">
+      <figcaption>The whole crew — volunteers and staff</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1293.jpg" alt="Volunteers on beach with tubs of baby turtles" loading="lazy">
+      <figcaption>Ready for release — turtles meet the beach</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1295.jpg" alt="Volunteers preparing turtle release on beach" loading="lazy">
+      <figcaption>Lining up for the big moment</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1296.jpg" alt="Holding a baby turtle on the beach before release" loading="lazy">
+      <figcaption>One last goodbye before the ocean</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1298.jpg" alt="Baby turtle heading toward the waves" loading="lazy">
+      <figcaption>Go little guy — the ocean awaits</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1303.jpg" alt="Selfie with baby turtle on the beach at release" loading="lazy">
+      <figcaption>Release day selfie with a baby turtle</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1309.jpg" alt="Family on the beach holding baby turtles at release" loading="lazy">
+      <figcaption>Family turtle release — an unforgettable moment</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1315.jpg" alt="Lombok villa with breakfast on patio" loading="lazy">
+      <figcaption>Breakfast at the Lombok villa</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1316.jpg" alt="Poolside breakfast buffet" loading="lazy">
+      <figcaption>Poolside breakfast spread</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1317.jpg" alt="Noodle soup and breakfast by the pool" loading="lazy">
+      <figcaption>Noodle soup breakfast by the pool</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1318.jpg" alt="Breakfast dishes at villa" loading="lazy">
+      <figcaption>Fresh villa breakfast</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1321.jpg" alt="Holding tiny baby turtle in gloved hands" loading="lazy">
+      <figcaption>One more turtle cuddle</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1322.jpg" alt="Baby turtle close-up in hands" loading="lazy">
+      <figcaption>Tiny but mighty</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1323.jpg" alt="Son with local friend under conservation sign" loading="lazy">
+      <figcaption>New friends at the conservation center</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1326.jpg" alt="Group selfie with conservation staff" loading="lazy">
+      <figcaption>Family selfie with the Lombok crew</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/IMG_1330.jpg" alt="Floating in infinity plunge pool overlooking palms" loading="lazy">
+      <figcaption>Floating in paradise — last evening in Lombok</figcaption>
     </figure>
 
   </div>
